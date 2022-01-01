@@ -1,6 +1,10 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, unused_local_variable, sized_box_for_whitespace, non_constant_identifier_names
 
+import 'package:e_commerce_app/components/horizontal_listview.dart';
+import 'package:e_commerce_app/components/products.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:carousel_pro/carousel_pro.dart';
 
 void main(List<String> args) {
   runApp(
@@ -21,10 +25,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    Widget image_carousl = new Container(
+      height: 200.0,
+      child: Carousel(
+        boxFit: BoxFit.cover,
+        images: [
+          AssetImage('images/c1.jpg'),
+          AssetImage('images/m1.jpeg'),
+          AssetImage('images/w3.jpeg'),
+          AssetImage('images/w4.jpeg'),
+          AssetImage('images/m2.jpg'),
+        ],
+        autoplay: false,
+        // animationCurve: Curves.fastOutSlowIn,
+        // animationDuration: Duration(microseconds: 1000),
+        dotSize: 4.0,
+        // dotColor: Colors.red,
+        indicatorBgPadding: 4.0,
+      ),
+    );
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.1,
         backgroundColor: Colors.red,
-        title: Text('ShopApp'),
+        title: Text('OnlineAdvanceShop'),
         actions: [
           new IconButton(
             onPressed: () {},
@@ -101,18 +125,49 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Settings'),
-                leading: Icon(Icons.settings),
+                leading: Icon(
+                  Icons.settings,
+                  color: Colors.blue,
+                ),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text('About'),
-                leading: Icon(Icons.help),
+                leading: Icon(
+                  Icons.help,
+                  color: Colors.green,
+                ),
               ),
             ),
           ],
         ),
+      ),
+      body: ListView(
+        children: <Widget>[
+          //image carousel begin here
+          image_carousl,
+          //padding widget
+          new Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: new Text('Categories'),
+          ),
+
+          // Horizontal list view begin here
+          HorizontalList(),
+
+          new Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: new Text('Recent products'),
+          ),
+          // grid view
+
+          Container(
+            height: 320.0,
+            child: Products(),
+          ),
+        ],
       ),
     );
   }
