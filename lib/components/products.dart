@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, non_constant_identifier_names, camel_case_types, prefer_const_constructors
 
+import 'package:e_commerce_app/pages/product_details.dart';
 import 'package:flutter/material.dart';
 
 class Products extends StatefulWidget {
@@ -60,13 +61,23 @@ class Single_prod extends StatelessWidget {
         tag: prod_name,
         child: Material(
           child: InkWell(
-            onTap: () {},
+            // passing the value of the prodcut details page
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ProductDetails(
+                  product_detail_name: prod_name,
+                  product_detail_new_price: prod_price,
+                  product_detail_old_price: prod_old_price,
+                  product_detail_picture: prod_picture,
+                ),
+              ),
+            ),
             child: GridTile(
               footer: Container(
                 color: Colors.white70,
                 child: ListTile(
                   leading: Text(
-                    'prod_name',
+                    prod_name,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   title: Text(
