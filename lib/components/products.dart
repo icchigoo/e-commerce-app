@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, non_constant_identifier_names, camel_case_types, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, non_constant_identifier_names, camel_case_types, prefer_const_constructors, unnecessary_brace_in_string_interps
 
 import 'package:e_commerce_app/pages/product_details.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +21,30 @@ class _ProductsState extends State<Products> {
     {
       "name": "Red dress",
       "picture": "images/products/dress1.jpeg",
+      "old_price": 100,
+      "price": 50,
+    },
+    {
+      "name": "Hills",
+      "picture": "images/products/hills1.jpeg",
+      "old_price": 100,
+      "price": 50,
+    },
+    {
+      "name": "Black blazer",
+      "picture": "images/products/blazer2.jpeg",
+      "old_price": 100,
+      "price": 50,
+    },
+    {
+      "name": "Skirt",
+      "picture": "images/products/skt2.jpeg",
+      "old_price": 100,
+      "price": 50,
+    },
+    {
+      "name": "Black dress",
+      "picture": "images/products/dress2.jpeg",
       "old_price": 100,
       "price": 50,
     },
@@ -58,7 +82,7 @@ class Single_prod extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Hero(
-        tag: prod_name,
+        tag: Text("hero 1"),
         child: Material(
           child: InkWell(
             // passing the value of the prodcut details page
@@ -74,24 +98,24 @@ class Single_prod extends StatelessWidget {
             ),
             child: GridTile(
               footer: Container(
-                color: Colors.white70,
-                child: ListTile(
-                  leading: Text(
-                    prod_name,
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  title: Text(
-                    "\$$prod_price",
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.w800),
-                  ),
-                  subtitle: Text(
-                    "\$$prod_old_price",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontWeight: FontWeight.w800,
-                        decoration: TextDecoration.lineThrough),
-                  ),
+                color: Colors.white,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        prod_name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 16.0),
+                      ),
+                    ),
+                    Text(
+                      "\$${prod_price}",
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
                 ),
               ),
               child: Image.asset(

@@ -2,6 +2,7 @@
 
 import 'package:e_commerce_app/components/horizontal_listview.dart';
 import 'package:e_commerce_app/components/products.dart';
+import 'package:e_commerce_app/pages/cart.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:carousel_pro/carousel_pro.dart';
@@ -42,6 +43,7 @@ class _HomePageState extends State<HomePage> {
         dotSize: 4.0,
         // dotColor: Colors.red,
         indicatorBgPadding: 4.0,
+        dotBgColor: Colors.transparent,
       ),
     );
     return Scaffold(
@@ -58,7 +60,14 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           new IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Cart(),
+                ),
+              );
+            },
             icon: Icon(
               Icons.shopping_cart,
               color: Colors.white,
@@ -89,35 +98,42 @@ class _HomePageState extends State<HomePage> {
               onTap: () {},
               child: ListTile(
                 title: Text('Home Page'),
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.home, color: Colors.red),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text('My account'),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person, color: Colors.red),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text('My Orders'),
-                leading: Icon(Icons.shopping_basket),
+                leading: Icon(Icons.shopping_basket, color: Colors.red),
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cart(),
+                  ),
+                );
+              },
               child: ListTile(
-                title: Text('Categories'),
-                leading: Icon(Icons.dashboard),
+                title: Text('Shopping cart'),
+                leading: Icon(Icons.shopping_cart, color: Colors.red),
               ),
             ),
             InkWell(
               onTap: () {},
               child: ListTile(
                 title: Text('Favourites'),
-                leading: Icon(Icons.favorite),
+                leading: Icon(Icons.favorite, color: Colors.red),
               ),
             ),
             Divider(),
